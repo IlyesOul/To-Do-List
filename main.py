@@ -85,6 +85,7 @@ def user_input():
 		for index in range(len(training_data)):
 			csvwriter.writerow(training_data[index])
 
+
 # PRE: 'data.csv' is filled with training data
 # POST: Fully-trained Random Forest Ensemble is returned
 def learning():
@@ -116,6 +117,7 @@ def learning():
 
 	# Return trained RFE-model
 	return rfe
+
 
 # PRE: 'model' is a trained model
 # POST: List of event_to_score
@@ -168,14 +170,15 @@ def automation(sorted_event_list):
 	# Continuously notify
 	index = 0
 	while True:
-		if index != len(sorted_event_list):
-			notification.notify(
-				title="This is a reminder!",
-				message=f"Do {sorted_event_list[index].event}!",
-				timeout=10
-			)
-			index += 1
-			time.sleep(interval*60)
+		if index == len(sorted_event_list):
+			index = 0
+		notification.notify(
+			title="This is a reminder!",
+			message=f"Do {sorted_event_list[index].event}!",
+			timeout=10
+		)
+		index += 1
+		time.sleep(interval*60)
 
 
 user_input()
