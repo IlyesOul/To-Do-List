@@ -32,7 +32,7 @@ def user_input():
 	with open('data.csv') as f:
 		pass
 
-	# Initial Greetings and blankspace
+	# Initial Greetings and blank spaces
 	print(f"Welcome to the program")
 	print(f"All input and output numbers are on a scale of 1-5! ")
 	print()
